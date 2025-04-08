@@ -10,8 +10,8 @@ public class AccountPage {
     public static final SelenideElement homeTitle = $(By.xpath("//h2[contains(text(),'Home')]"));
 
 
-public void isTextHomeDisplayed() {
-    homeTitle.shouldBe(visible);
+    public void isTextHomeDisplayed() {
+        homeTitle.shouldBe(visible);
 
-}
+    }
 }

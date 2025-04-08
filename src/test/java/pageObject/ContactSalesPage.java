@@ -12,7 +12,6 @@ public class ContactSalesPage {
     public static final SelenideElement lastnameInput = $(By.id("form-field-last_name"));
 
 
-
     public void setGetValues(String firstname, String lastname) {
         setUserFirstname(firstname);
         setUserLastname(lastname);
@@ -20,21 +19,20 @@ public class ContactSalesPage {
         getUserLastname();
     }
 
+    public String getUserFirstname() {
+        return firstnameInput.getValue();
+    }
 
     public void setUserFirstname(String firstname) {
         firstnameInput.shouldBe(visible).setValue(firstname);
     }
 
+    public String getUserLastname() {
+        return lastnameInput.getValue();
+    }
+
     public void setUserLastname(String lastname) {
         lastnameInput.shouldBe(visible).setValue(lastname);
-    }
-
-    public String getUserFirstname (){
-        return firstnameInput.getValue();
-    }
-
-    public String getUserLastname (){
-        return lastnameInput.getValue();
     }
 }
 

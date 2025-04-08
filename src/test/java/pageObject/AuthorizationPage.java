@@ -15,25 +15,26 @@ public class AuthorizationPage {
 
     public static final SelenideElement invalidCredErrorMessage = $(By.xpath("//div[contains(text(),'Incorrect username or password.')]"));
 
-    public void authOperation(String login,String password){
+    public void authOperation(String login, String password) {
         setUserEmail(login);
         setUserPassword(password);
         pushSubmitButton();
     }
 
 
-    public void setUserEmail(String login){
+    public void setUserEmail(String login) {
         emailInput.shouldBe(visible).setValue(login);
     }
 
-    public void setUserPassword(String password){
+    public void setUserPassword(String password) {
         passwordInput.shouldBe(visible).setValue(password);
     }
-    public void pushSubmitButton(){
+
+    public void pushSubmitButton() {
         submitButton.shouldBe(visible).click();
     }
 
-    public void isErrorMessageDisplayed(){
+    public void isErrorMessageDisplayed() {
         invalidCredErrorMessage.shouldBe(visible);
     }
 

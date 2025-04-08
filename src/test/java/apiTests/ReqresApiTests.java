@@ -9,16 +9,17 @@ import pojo.GetUsersData;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
+import static org.example.constants.ReqresConstants.*;
 
 public class ReqresApiTests {
 
     @Test
     public void checkColorYear() {
-        List<GetColorsData> colors =given()
+        List<GetColorsData> colors = given()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
-                .baseUri("https://reqres.in/api")
-                .basePath("/unknown")
+                .baseUri(REQRES_BASE_URL)
+                .basePath(GET_API_UNKNOWN)
 
                 .when()
                 .get()
@@ -33,12 +34,12 @@ public class ReqresApiTests {
     }
 
     @Test
-    public void checkUserAvatar () {
-        List<GetUsersData> users =given()
+    public void checkUserAvatar() {
+        List<GetUsersData> users = given()
                 .accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
-                .baseUri("https://reqres.in/api")
-                .basePath("/users")
+                .baseUri(REQRES_BASE_URL)
+                .basePath(GET_API_USERS)
 
                 .when()
                 .get()

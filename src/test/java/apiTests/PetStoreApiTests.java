@@ -2,20 +2,20 @@ package apiTests;
 
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.Matchers.equalTo;
-
 import static builders.PostPetGenerator.createDefaultPet;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
+import static org.example.constants.PetStoreConstants.*;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.Matchers.equalTo;
 
 public class PetStoreApiTests {
 
     @Test
     public void postNewPetWithCode200() {
         given()
-                .baseUri("https://petstore.swagger.io/v2")
-                .basePath("/pet")
+                .baseUri(PETSTORE_BASE_URL)
+                .basePath(CREATE_NEW_PET)
                 .contentType(JSON)
                 .accept(JSON)
                 .body(createDefaultPet())
@@ -35,7 +35,7 @@ public class PetStoreApiTests {
     public void GetPetByIdWithCode200() {
         int petId = 10;
         given()
-                .baseUri("https://petstore.swagger.io/v2")
+                .baseUri(PETSTORE_BASE_URL)
                 .basePath("/pet/{Id}")
                 .pathParam("Id", petId)
                 .accept(JSON)
@@ -54,10 +54,10 @@ public class PetStoreApiTests {
     public void DeletePetByIdWithCode200() {
         int petId = 2;
         given()
-                .baseUri("https://petstore.swagger.io/v2")
+                .baseUri(PETSTORE_BASE_URL)
                 .basePath("/pet/{Id}")
                 .pathParam("Id", petId)
-                .header("api_key","special-key")
+                .header("api_key", "special-key")
                 .accept(JSON)
                 .contentType(JSON)
 
@@ -74,10 +74,10 @@ public class PetStoreApiTests {
     @Test //ВСЕГДА НЕУСПЕШНЫЙ (ХЗ КАК 400 ПОЛУЧИТЬ)
     public void LogIntoTheSystemWithError400() {
         given()
-                .baseUri("https://petstore.swagger.io/v2")
-                .basePath("/user/login")
-                .queryParam("username", "&^$BUhnv78043tmkldfsшовашг88")
-                .queryParam("password", "ГРИМНКтyh8f76342yh*(&@$&*H")
+                .baseUri(PETSTORE_BASE_URL)
+                .basePath(AUTHORIZE_USER)
+                .queryParam("username", PETSTORE_USER_LOGIN)
+                .queryParam("password", PETSTORE_USER_PASSWORD)
                 .accept(JSON)
                 .contentType(JSON)
 

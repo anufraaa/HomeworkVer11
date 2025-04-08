@@ -16,10 +16,10 @@ public class MainPage {
 
     public static final SelenideElement resoursesButton = $(By.xpath("//button[contains(text(),'Resources')]"));
 
-    public static final ElementsCollection topicsList = $$(By.xpath("//ul[@aria-labelledby=\"resources-topics-heading\"]/li"));
+    public static final ElementsCollection topicsList = $$(By.xpath("//ul[@aria-labelledby='resources-topics-heading']/li"));
 
 
-    public void goToCiCd () {
+    public void goToCiCd() {
         pushSolutionsButton();
         pushCicdButton();
     }
@@ -28,7 +28,6 @@ public class MainPage {
         pushResourcesButton();
         getTopicsTexts();
     }
-
 
 
     public void pushSolutionsButton() {
